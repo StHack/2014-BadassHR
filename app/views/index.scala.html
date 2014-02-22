@@ -1,37 +1,35 @@
 @(message: String,members: List[String],skills: List[String])
 
-@main("Welcome to Play") {
+@main("Badass Society Human Ressource Interface") {
 
-<div class ="row-fluid">
-    <h1>Bienvenue @message !</h1>
-</div>
+<nav class="navbar navbar-default" role="navigation" id="ho" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <h1 class="navbar-brand" id="title">Badass Society HRI</h1>
+        </div>
+        <div class="navbar-form navbar-left" role="search" id="hopla">
+                @helper.form(action = routes.Application.search()) {
+                <input type='text' class=" input-text-level form-control"  name='pseudo' placeholder=" Votre pseudo" required="required" />
+                <input type='text' class=" input-text-level form-control"  name='depthIndex' placeholder=" N-?" required="required"/>
+                <input type='text' class=" input-text-level form-control"  name='skill' placeholder=" Compétence particulière?"/>
+                <button type="submit" class="btn btn-default">Submit</button>
+                }
+        </div>
 
-
-<div class="row-fluid">
-    <div class="span1"></div>
-    <div class="input-prepend span10">
-        @helper.form(action = routes.Application.search()) {
-        <input type='text' class=" input-text-level"  name='pseudo' placeholder=" Votre pseudo" required="required" />
-        <input type='text' class=" input-text-level"  name='depthIndex' placeholder=" N-?" required="required"/>
-        <input type='text' class=" input-text-level"  name='skill' placeholder=" Compétence particulière?"/>
-        <input type="submit" class="btn" value="Search"></input>
-        }
     </div>
-    @if(members != null){
+</nav>
+<div class="panel" id="panel">
+    @if(members != null && members.size > 0){
+        <p>Toutes ces personnes travaillent pour @message :</p>
         @for(m <- members){
-        <li>@m</li>
+            <li>@m</li>
         }
     }else{
         @if(message != null){
             <p>@message have no subordinated</p>
         }else{}
-
     }
-
-    <div class="span1"></div>
-</div>
-
-
+    </div>
 }
 
 

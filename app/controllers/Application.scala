@@ -9,12 +9,6 @@ import utils.Utils
 object Application extends Controller {
 
   def index = Action {
-//    for(e <- Employees.getAll()){
-//      for(s <- Skills.getAllByEmployee(e)){
-//        Logger.debug(e + ":" + s.toString())
-//      }
-//
-//    }
     Ok(views.html.index(null,null,null))
   }
 
