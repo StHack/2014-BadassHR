@@ -9,15 +9,22 @@
         </div>
         <div class="navbar-form navbar-left" role="search" id="hopla">
                 @helper.form(action = routes.Application.search()) {
-                <input type='text' class=" input-text-level form-control"  name='pseudo' placeholder=" Votre pseudo" required="required" />
+                <input type='text' class=" input-text-level form-control"  name='pseudo' placeholder=" Nom de l'employé" required="required" />
                 <input type='text' class=" input-text-level form-control"  name='depthIndex' placeholder=" N-?" required="required"/>
-                <input type='text' class=" input-text-level form-control"  name='skill' placeholder=" Compétence particulière?"/>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <input type='text' class=" input-text-level form-control"  name='skill' placeholder=" Comp. particulière?"/>
+                <button type="submit" class="btn btn-default">Search</button>
                 }
         </div>
 
     </div>
 </nav>
+<div class="panel" id="panelDesc">
+    <p> Interface de recherche des subalternes des employés de la Badass Society. <br/>
+        Nom de l'employé : nom du N.                                                   <br/>
+        N-? : Profondeur dans la chaine hierarchique                                        <br/>
+        Comp. particulière : Filtre par rapport à une compétence particulière                    <br/>
+    </p>
+</div>
 <div class="panel" id="panel">
     @if(members != null && members.size > 0){
         <p>Toutes ces personnes travaillent pour @message :</p>
@@ -29,7 +36,7 @@
             <p>@message have no subordinated</p>
         }else{}
     }
-    </div>
+</div>
 }
 
 
