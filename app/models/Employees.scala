@@ -21,9 +21,19 @@ object Employees {
   }
 
   def getAllReport(name :String, depthIndex :String): Seq[String] = {
-    val strReq = "MATCH (n)<-[:WORKS_FOR*1.."+depthIndex+"]-(m) WHERE n:BAS AND n.name={name} RETURN m.name as name"
-    val req = Cypher(strReq).on(("name",name))
-    req.apply().map(row => row[String]("name"))
+    try{
+      val strReq = "MATCH (n)<-[:WORKS_FOR*1.."+depthIndex+"]-(m) WHERE n:BAS AND n.name={name} RETURN m.name as name"
+      val req = Cypher(strReq).on(("name",name))
+      req.apply().map(row => row[String]("name"))
+    }catch{
+      case re: RuntimeException =>
+        val tmpSeq :List[String] = List(re.toString)
+        return tmpSeq
+      case e: Exception =>
+        val tmpSeq :List[String] = List(e.toString)
+        return tmpSeq
+    }
+
   }
 
   def getAllReport(name :String, depthIndex :String, skill :String): Seq[String] = {
